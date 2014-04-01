@@ -723,10 +723,10 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     OnKeyDown = ReturnKeyDown
   end
   object EnemyDef: TLabeledEdit
-    Left = 664
-    Top = 88
+    Left = 696
+    Top = 96
     Width = 105
-    Height = 25
+    Height = 24
     EditLabel.Width = 100
     EditLabel.Height = 25
     EditLabel.Caption = #25973#20154#38450#31142#21147
@@ -736,14 +736,14 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     EditLabel.Font.Name = #24494#36575#27491#40657#39636
     EditLabel.Font.Style = [fsBold]
     EditLabel.ParentFont = False
-    LabelPosition = lpAbove
+    LabelPosition = lpLeft
     LabelSpacing = 3
     TabOrder = 19
     Text = '120000'
     OnKeyDown = ReturnKeyDown
   end
   object TeamName: TEdit
-    Left = 168
+    Left = 280
     Top = 24
     Width = 385
     Height = 41
@@ -764,7 +764,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
   object GroupBox3: TGroupBox
     Left = 16
     Top = 16
-    Width = 137
+    Width = 257
     Height = 49
     Caption = #20786#23384#30340#38538#20237
     Font.Charset = ANSI_CHARSET
@@ -842,6 +842,81 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
       Height = 22
       GroupIndex = 1
       Caption = '5'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+      OnClick = TeamSelectClick
+    end
+    object Team6: TSpeedButton
+      Left = 128
+      Top = 19
+      Width = 23
+      Height = 22
+      GroupIndex = 1
+      Caption = '6'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+      OnClick = TeamSelectClick
+    end
+    object Team7: TSpeedButton
+      Left = 152
+      Top = 19
+      Width = 23
+      Height = 22
+      GroupIndex = 1
+      Caption = '7'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+      OnClick = TeamSelectClick
+    end
+    object Team8: TSpeedButton
+      Left = 176
+      Top = 19
+      Width = 23
+      Height = 22
+      GroupIndex = 1
+      Caption = '8'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+      OnClick = TeamSelectClick
+    end
+    object Team9: TSpeedButton
+      Left = 200
+      Top = 19
+      Width = 23
+      Height = 22
+      GroupIndex = 1
+      Caption = '9'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+      OnClick = TeamSelectClick
+    end
+    object Team10: TSpeedButton
+      Left = 224
+      Top = 19
+      Width = 23
+      Height = 22
+      GroupIndex = 1
+      Caption = '10'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13

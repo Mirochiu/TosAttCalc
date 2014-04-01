@@ -64,6 +64,11 @@ __published:	// IDE-managed Components
   TSpeedButton *Team3;
   TSpeedButton *Team4;
   TSpeedButton *Team5;
+  TSpeedButton *Team6;
+  TSpeedButton *Team7;
+  TSpeedButton *Team8;
+  TSpeedButton *Team9;
+  TSpeedButton *Team10;
   void __fastcall ProcessClick(TObject *Sender);
   void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
   void __fastcall TeamSelectClick(TObject *Sender);

@@ -126,6 +126,16 @@ int TTosAttCalcMainForm::GetCurrentTeam()
     team_idx = 4;
   else if (Team5->Down)
     team_idx = 5;
+  else if (Team6->Down)
+    team_idx = 6;
+  else if (Team7->Down)
+    team_idx = 7;
+  else if (Team8->Down)
+    team_idx = 8;
+  else if (Team9->Down)
+    team_idx = 9;
+  else if (Team10->Down)
+    team_idx = 10;
 
   if (team_idx == -1)
   {
