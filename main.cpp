@@ -151,6 +151,8 @@ int TTosAttCalcMainForm::GetCurrentTeam()
 __fastcall TTosAttCalcMainForm::TTosAttCalcMainForm(TComponent* Owner)
   : TForm(Owner)
 {
+  this->Caption = this->Caption + " ---- 此版本釋出時間: "  __DATE__ " " __TIME__;
+
   LoadCommon();
   last_team_idx = 1;  // for save change
   LoadTeam();
@@ -188,6 +190,8 @@ void TTosAttCalcMainForm::LoadTeam(int TeamId)
   AddAttForPowGem->Checked = GetRegistryBool(sTeamPrefix+"AddAttForPowGem", true);
 
   YourTotalHP->Text  = GetRegistryValue(sTeamPrefix+"TotalHP", "1", false);
+
+  TwoGemLeader->Checked = GetRegistryBool(sTeamPrefix+"TwoGemLeader", false);
 }
 
 void TTosAttCalcMainForm::SaveTeam(int TeamId)
@@ -221,6 +225,8 @@ void TTosAttCalcMainForm::SaveTeam(int TeamId)
   SetRegistryBool(sTeamPrefix+"AddAttForPowGem", AddAttForPowGem->Checked);
 
   SetRegistryValue(sTeamPrefix+"TotalHP", YourTotalHP->Text);
+
+  SetRegistryBool(sTeamPrefix+"TwoGemLeader", TwoGemLeader->Checked);
 }
 
 void TTosAttCalcMainForm::LoadCommon()
@@ -425,28 +431,30 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
 
   //---
 
+  bool hasTwoGemLeader = TwoGemLeader->Checked;
+
   int TotalAttackGem  = StrToNum(AttGemNum->Text,0);
   AttGemNum->Text = TotalAttackGem;
 
-  int TotalAttackPGem = StrToNum(PowerGemNum->Text,0);
-  PowerGemNum->Text = TotalAttackPGem;
+  int TotalAttackPowGem = StrToNum(PowerGemNum->Text,0);
+  PowerGemNum->Text = TotalAttackPowGem;
 
-  int AttackGemChainNum = StrToNum(AttGemChainNum->Text,(TotalAttackGem>3)?1:0);
+  int AttackGemChainNum = StrToNum(AttGemChainNum->Text,(TotalAttackGem>(hasTwoGemLeader?2:3))?1:0); // auto seting 1 or 0 chain
   AttGemChainNum->Text = AttackGemChainNum;
 
-  int TotalCombo = StrToNum(ComboNum->Text, (TotalAttackGem>3)?1:0);
+  int TotalCombo = StrToNum(ComboNum->Text, (TotalAttackGem>(hasTwoGemLeader?2:3))?1:0); // auto seting 1 or 0 combo
   ComboNum->Text = TotalCombo;
 
   double AdditionalComboRate = 0.0;
   if (Mercenary->Checked)
   {
-    AdditionalComboRate = (TotalCombo-AttackGemChainNum-TotalRecChainNum)*0.5;  // 尚未扣除心珠串數
+    AdditionalComboRate = (TotalCombo-AttackGemChainNum-TotalRecChainNum)*0.5;
   }
 
-  int AdditionalGem = TotalAttackGem - AttackGemChainNum*3;
-  double AddGemRate = AdditionalGem*0.25;
-  double PowGemRate = TotalAttackPGem * (AddAttForPowGem->Checked?0.25:0.15);
-  double GemRate    = AttackGemChainNum + AdditionalComboRate + AddGemRate + PowGemRate;
+  int AdditionalGem = TotalAttackGem - (hasTwoGemLeader?2:3)*AttackGemChainNum;
+  double AddGemRate = AdditionalGem*0.25;  // 額外消除的攻珠的加乘倍率
+  double PowGemRate = TotalAttackPowGem * (AddAttForPowGem->Checked?0.25:0.15); //強珠加成倍率
+  double GemRate    = AttackGemChainNum * (hasTwoGemLeader?0.75:1.0) + AdditionalComboRate + AddGemRate + PowGemRate;
 
   MsgBoard->Lines->Add("總消珠加成="   + FloatToStr(GemRate*100) + "%"
                        " ("  + FloatToStr(AttackGemChainNum*100) + "%"

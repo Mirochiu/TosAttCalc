@@ -1,10 +1,10 @@
 object TosAttCalcMainForm: TTosAttCalcMainForm
-  Left = 910
-  Top = 219
+  Left = 956
+  Top = 173
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #31070#39764#20043#22612' '#32020#33394#25915#25802#21147#35336#31639#27231
-  ClientHeight = 495
+  ClientHeight = 515
   ClientWidth = 878
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,9 +17,22 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
   OnClose = FormClose
   PixelsPerInch = 120
   TextHeight = 16
+  object Label1: TLabel
+    Left = 8
+    Top = 304
+    Width = 107
+    Height = 17
+    Caption = '('#27880#24847#24515#29664#20063#26159'2'#28040')'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #24494#36575#27491#40657#39636
+    Font.Style = []
+    ParentFont = False
+  end
   object Process: TBitBtn
     Left = 16
-    Top = 448
+    Top = 464
     Width = 849
     Height = 41
     Caption = #35336#31639#38538#20237#25915#25802#21147
@@ -153,10 +166,10 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     OnKeyDown = ReturnKeyDown
   end
   object MsgBoard: TMemo
-    Left = 568
-    Top = 128
+    Left = 576
+    Top = 136
     Width = 297
-    Height = 313
+    Height = 321
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -190,7 +203,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     Left = 128
     Top = 168
     Width = 129
-    Height = 273
+    Height = 289
     Caption = #25915#25802#29664#33287'Combo'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -199,14 +212,27 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 16
+    object Label3: TLabel
+      Left = 12
+      Top = 256
+      Width = 94
+      Height = 17
+      Caption = '('#23553#31070#24515#29664#26159'2'#28040')'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+    end
     object AttGemNum: TLabeledEdit
       Left = 16
       Top = 41
       Width = 81
       Height = 25
-      EditLabel.Width = 91
+      EditLabel.Width = 78
       EditLabel.Height = 17
-      EditLabel.Caption = #32317#28040#25915#25802#29664#25976#30446
+      EditLabel.Caption = #32317#28040#25915#29664#25976#30446
       EditLabel.Font.Charset = ANSI_CHARSET
       EditLabel.Font.Color = clWindowText
       EditLabel.Font.Height = -13
@@ -224,9 +250,9 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
       Top = 89
       Width = 81
       Height = 25
-      EditLabel.Width = 91
+      EditLabel.Width = 104
       EditLabel.Height = 17
-      EditLabel.Caption = #28040#24375#21270#29664#30340#25976#30446
+      EditLabel.Caption = #32317#28040#24375#21270#25915#29664#25976#30446
       EditLabel.Font.Charset = ANSI_CHARSET
       EditLabel.Font.Color = clWindowText
       EditLabel.Font.Height = -13
@@ -299,8 +325,8 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
   object GroupBox1: TGroupBox
     Left = 264
     Top = 168
-    Width = 297
-    Height = 273
+    Width = 305
+    Height = 289
     Caption = #22686#20663#25216#33021
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -309,6 +335,19 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 17
+    object Label2: TLabel
+      Left = 158
+      Top = 264
+      Width = 133
+      Height = 17
+      Caption = '('#27880#24847#23553#31070#30340#24515#29664#26159'2'#28040')'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = []
+      ParentFont = False
+    end
     object FireWitch: TCheckBox
       Left = 16
       Top = 24
@@ -382,9 +421,9 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     object Combo8DoubleAtt: TCheckBox
       Left = 16
       Top = 144
-      Width = 97
+      Width = 129
       Height = 17
-      Caption = #28779#22969'('#35201'8C)'
+      Caption = #28779#22969'('#35201'8Combo)'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -470,9 +509,9 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     object GemAdd0_05: TCheckBox
       Left = 16
       Top = 216
-      Width = 185
+      Width = 169
       Height = 17
-      Caption = #35299#25918#20027#35282'('#27599#38982#25915#29664'5%)'
+      Caption = #35299#25918#20027#35282'('#27599#38982#25915#29664#22686'5%)'
       TabOrder = 8
     end
     object LightEgg: TCheckBox
@@ -511,7 +550,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
       TabOrder = 9
     end
     object RecChain: TLabeledEdit
-      Left = 168
+      Left = 160
       Top = 237
       Width = 49
       Height = 25
@@ -526,7 +565,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
   end
   object GroupBox2: TGroupBox
     Left = 8
-    Top = 344
+    Top = 360
     Width = 113
     Height = 97
     Caption = 'Combo'#21152#25104
@@ -743,7 +782,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     OnKeyDown = ReturnKeyDown
   end
   object TeamName: TEdit
-    Left = 280
+    Left = 288
     Top = 24
     Width = 385
     Height = 41
@@ -764,9 +803,9 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
   object GroupBox3: TGroupBox
     Left = 16
     Top = 16
-    Width = 257
+    Width = 265
     Height = 49
-    Caption = #20786#23384#30340#38538#20237
+    Caption = #36984#25799#20786#23384#30340#38538#20237
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -913,7 +952,7 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
     object Team10: TSpeedButton
       Left = 224
       Top = 19
-      Width = 23
+      Width = 25
       Height = 22
       GroupIndex = 1
       Caption = '10'
@@ -925,5 +964,19 @@ object TosAttCalcMainForm: TTosAttCalcMainForm
       ParentFont = False
       OnClick = TeamSelectClick
     end
+  end
+  object TwoGemLeader: TCheckBox
+    Left = 16
+    Top = 280
+    Width = 81
+    Height = 17
+    Caption = '2'#28040#23553#31070
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #24494#36575#27491#40657#39636
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 22
   end
 end

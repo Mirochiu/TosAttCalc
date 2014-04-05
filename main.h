@@ -69,6 +69,10 @@ __published:	// IDE-managed Components
   TSpeedButton *Team8;
   TSpeedButton *Team9;
   TSpeedButton *Team10;
+  TCheckBox *TwoGemLeader;
+  TLabel *Label1;
+  TLabel *Label2;
+  TLabel *Label3;
   void __fastcall ProcessClick(TObject *Sender);
   void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
   void __fastcall TeamSelectClick(TObject *Sender);
