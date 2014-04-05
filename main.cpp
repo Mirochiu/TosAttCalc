@@ -457,7 +457,7 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
   double GemRate    = AttackGemChainNum * (hasTwoGemLeader?0.75:1.0) + AdditionalComboRate + AddGemRate + PowGemRate;
 
   MsgBoard->Lines->Add("總消珠加成="   + FloatToStr(GemRate*100) + "%"
-                       " ("  + FloatToStr(AttackGemChainNum*100) + "%"
+                       " ("  + FloatToStr(AttackGemChainNum*(hasTwoGemLeader?75:100)) + "%"
                        " + " + FloatToStr(AddGemRate*100)        + "%"
                        " + " + FloatToStr(PowGemRate*100)        + "%" ")");
   //MsgBoard->Lines->Add("(攻擊珠加成="   + FloatToStr(AttackGemChainNum*100) + "%");
