@@ -171,27 +171,28 @@ void TTosAttCalcMainForm::LoadTeam(int TeamId)
   Att2->Text = GetRegistryValue(sTeamPrefix+"Att2", "1490", false);
   Att3->Text = GetRegistryValue(sTeamPrefix+"Att3", "1492", false);
   Att4->Text = GetRegistryValue(sTeamPrefix+"Att4", "1314", false);
-  Att5->Text = GetRegistryValue(sTeamPrefix+"Att5", "0", false);
+  Att5->Text = GetRegistryValue(sTeamPrefix+"Att5", "0",    false);
   Att6->Text = GetRegistryValue(sTeamPrefix+"Att6", "1651", false);
-
-  AttRate1->Text = GetRegistryValue(sTeamPrefix+"AttRate1", "2.5", false);
-  AttRate2->Text = GetRegistryValue(sTeamPrefix+"AttRate2", "2.5", false);
 
   Rec1->Text = GetRegistryValue(sTeamPrefix+"Rec1", "438", false);
   Rec2->Text = GetRegistryValue(sTeamPrefix+"Rec2", "355", false);
   Rec3->Text = GetRegistryValue(sTeamPrefix+"Rec3", "355", false);
   Rec4->Text = GetRegistryValue(sTeamPrefix+"Rec4", "383", false);
-  Rec5->Text = GetRegistryValue(sTeamPrefix+"Rec5", "0", false);
+  Rec5->Text = GetRegistryValue(sTeamPrefix+"Rec5", "0",   false);
   Rec6->Text = GetRegistryValue(sTeamPrefix+"Rec6", "438", false);
+  
+  AttRate1->Text = GetRegistryValue(sTeamPrefix+"AttRate1", "2.5", false);
+  AttRate2->Text = GetRegistryValue(sTeamPrefix+"AttRate2", "2.5", false);
 
+  AddAttForPowGem->Checked = GetRegistryBool(sTeamPrefix+"AddAttForPowGem", true);
   WoodWitch->Checked = GetRegistryBool(sTeamPrefix+"WoodWitch", true);
   Dagi1->Checked     = GetRegistryBool(sTeamPrefix+"Dagi1", false);
   Dagi2->Checked     = GetRegistryBool(sTeamPrefix+"Dagi2", false);
-  AddAttForPowGem->Checked = GetRegistryBool(sTeamPrefix+"AddAttForPowGem", true);
-
-  YourTotalHP->Text  = GetRegistryValue(sTeamPrefix+"TotalHP", "1", false);
-
-  TwoGemLeader->Checked = GetRegistryBool(sTeamPrefix+"TwoGemLeader", false);
+  Wolve->Checked     = GetRegistryBool(sTeamPrefix+"Wolve", false);
+  TwoGemMatchLeader->Checked = GetRegistryBool(sTeamPrefix+"TwoGemMatchLeader", false);
+  TwoTypeLeader->Checked = GetRegistryBool(sTeamPrefix+"TwoTypeLeader", false);
+  
+  YourTotalHP->Text  = GetRegistryValue(sTeamPrefix+"TotalHP", "1", true);
 }
 
 void TTosAttCalcMainForm::SaveTeam(int TeamId)
@@ -209,25 +210,27 @@ void TTosAttCalcMainForm::SaveTeam(int TeamId)
   SetRegistryValue(sTeamPrefix+"Att5", Att5->Text);
   SetRegistryValue(sTeamPrefix+"Att6", Att6->Text);
 
-  SetRegistryValue(sTeamPrefix+"AttRate1", AttRate1->Text);
-  SetRegistryValue(sTeamPrefix+"AttRate2", AttRate2->Text);
-
   SetRegistryValue(sTeamPrefix+"Rec1", Rec1->Text);
   SetRegistryValue(sTeamPrefix+"Rec2", Rec2->Text);
   SetRegistryValue(sTeamPrefix+"Rec3", Rec3->Text);
   SetRegistryValue(sTeamPrefix+"Rec4", Rec4->Text);
   SetRegistryValue(sTeamPrefix+"Rec5", Rec5->Text);
   SetRegistryValue(sTeamPrefix+"Rec6", Rec6->Text);
+  
+  SetRegistryValue(sTeamPrefix+"AttRate1", AttRate1->Text);
+  SetRegistryValue(sTeamPrefix+"AttRate2", AttRate2->Text);
 
+  SetRegistryBool(sTeamPrefix+"AddAttForPowGem", AddAttForPowGem->Checked);
   SetRegistryBool(sTeamPrefix+"WoodWitch", WoodWitch->Checked);
   SetRegistryBool(sTeamPrefix+"Dagi1", Dagi1->Checked);
   SetRegistryBool(sTeamPrefix+"Dagi2", Dagi2->Checked);
-  SetRegistryBool(sTeamPrefix+"AddAttForPowGem", AddAttForPowGem->Checked);
-
+  SetRegistryBool(sTeamPrefix+"Wolve", Wolve->Checked);
+  SetRegistryBool(sTeamPrefix+"TwoGemMatchLeader", TwoGemMatchLeader->Checked);
+  SetRegistryBool(sTeamPrefix+"TwoTypeLeader", TwoTypeLeader->Checked);
+  
   SetRegistryValue(sTeamPrefix+"TotalHP", YourTotalHP->Text);
-
-  SetRegistryBool(sTeamPrefix+"TwoGemLeader", TwoGemLeader->Checked);
 }
+//---------------------------------------------------------------------------
 
 void TTosAttCalcMainForm::LoadCommon()
 {
@@ -238,80 +241,75 @@ void TTosAttCalcMainForm::LoadCommon()
 
   EnemyDef->Text = GetRegistryValue("EnemyDef", "120000", false);
 
-  FireWitch->Checked = GetRegistryBool("FireWitch", false);
   Add2_00->Checked   = GetRegistryBool("12StarAdd2_00", false);
   Add1_50->Checked   = GetRegistryBool("DemonAdd1_50", false);
   Jinx->Checked      = GetRegistryBool("Jinx", false);
-  DoubleAtt->Checked = GetRegistryBool("12StarDoubleAtt", false);
   Combo8DoubleAtt->Checked = GetRegistryBool("Combo8DoubleAtt", false);
   WaterWitch->Checked = GetRegistryBool("WaterWitch", false);
   Undead->Checked    = GetRegistryBool("Undead", false);
-  GemAdd0_05->Checked = GetRegistryBool("GemAdd0_05", false);
+  GemAdd0_05->Checked = GetRegistryBool("AttGemAdd0_05", false);
 
   Mercenary->Checked = GetRegistryBool("Mercenary", false);
   RecChain->Text     = GetRegistryValue("RecChainNum", "");
 
   Odin->Checked      = GetRegistryBool("Odin", false);
-  YourHP->Text       = GetRegistryValue("CurrentHP", "1", false);
-  
-  LightEgg->Checked  = GetRegistryBool("LightEgg", false);
+  YourHP->Text       = GetRegistryValue("CurrentHP", "1");
 }
 //---------------------------------------------------------------------------
+
+void TTosAttCalcMainForm::SaveCommon()
+{  
+  SetRegistryValue("AttGemNum", AttGemNum->Text);
+  SetRegistryValue("PowerGemNum", PowerGemNum->Text);
+  SetRegistryValue("AttGemChainNum", AttGemChainNum->Text);
+  SetRegistryValue("ComboNum", ComboNum->Text);
+ 
+  SetRegistryValue("EnemyDef", EnemyDef->Text);
+
+  SetRegistryBool("12StarAdd2_00", Add2_00->Checked);
+  SetRegistryBool("DemonAdd1_50", Add1_50->Checked);
+  SetRegistryBool("Jinx", Jinx->Checked);
+  SetRegistryBool("Combo8DoubleAtt", Combo8DoubleAtt->Checked);
+  SetRegistryBool("WaterWitch", WaterWitch->Checked);
+  SetRegistryBool("Undead", Undead->Checked);
+  SetRegistryBool("AttGemAdd0_05", GemAdd0_05->Checked);
+
+  SetRegistryBool("Mercenary", Mercenary->Checked);
+  SetRegistryValue("RecChainNum", RecChain->Text);
+
+  SetRegistryBool("Odin", Odin->Checked);
+  SetRegistryValue("CurrentHP", YourHP->Text);
+}
 
 void __fastcall TTosAttCalcMainForm::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
-  bool isOk = true;
-
   SaveTeam();
-
-
-  // common
-  isOk &=  SetRegistryValue("AttGemNum", AttGemNum->Text);
-  isOk &=  SetRegistryValue("PowerGemNum", PowerGemNum->Text);
-  isOk &=  SetRegistryValue("AttGemChainNum", AttGemChainNum->Text);
-  isOk &=  SetRegistryValue("ComboNum", ComboNum->Text);
-
-  isOk &=  SetRegistryValue("EnemyDef", EnemyDef->Text);
-
-  isOk &=  SetRegistryBool("FireWitch", FireWitch->Checked);
-  isOk &=  SetRegistryBool("12StarAdd2_00", Add2_00->Checked);
-  isOk &=  SetRegistryBool("DemonAdd1_50", Add1_50->Checked);
-  isOk &=  SetRegistryBool("Jinx", Jinx->Checked);
-  isOk &=  SetRegistryBool("12StarDoubleAtt", DoubleAtt->Checked);
-  isOk &=  SetRegistryBool("Combo8DoubleAtt", Combo8DoubleAtt->Checked);
-  isOk &=  SetRegistryBool("WaterWitch", WaterWitch->Checked);
-  isOk &=  SetRegistryBool("Undead", Undead->Checked);
-  isOk &=  SetRegistryBool("GemAdd0_05", GemAdd0_05->Checked);
-
-  isOk &=  SetRegistryBool("Mercenary", Mercenary->Checked);
-  isOk &=  SetRegistryValue("RecChainNum", RecChain->Text);
-
-  isOk &=  SetRegistryBool("Odin", Odin->Checked);
-  isOk &=  SetRegistryValue("CurrentHP", YourHP->Text);
-
-  isOk &=  SetRegistryBool("LightEgg", LightEgg->Checked);
-  isOk &=  SetRegistryValue("RecChainNum", RecChain->Text);
+  SaveCommon();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
 {
-  int HP, TotalHP;
-  HP = StrToNum(YourHP->Text, 1);
-  if (HP <=0)
+  int HP=1, TotalHP=1;
+
+  if (Odin->Checked)
   {
-    ShowMessage("奧丁技能需要填寫目前的血量，請填寫你目前的血量 (目前的血量需要大於0)!");
-    return;
+    HP = StrToNum(YourHP->Text, 1);
+    if (HP <=0)
+    {
+      ShowMessage("奧丁技能需要填寫目前的血量，請填寫你目前的血量 (目前的血量需要大於0)!");
+      return;
+    }
+    YourHP->Text = HP;
+    TotalHP = StrToNum(YourTotalHP->Text, 1);
+    if (TotalHP<=0)
+    {
+      ShowMessage("奧丁技能需要填寫總共血量，請填寫你隊伍的總共血量 (目前的總共血量需要大於0)!");
+      return;
+    }
+    YourTotalHP->Text = TotalHP;
   }
-  YourHP->Text = HP;
-  TotalHP = StrToNum(YourTotalHP->Text, 1);
-  if (TotalHP<=0)
-  {
-    ShowMessage("奧丁技能需要填寫總共血量，請填寫你隊伍的總共血量 (目前的總共血量需要大於0)!");
-    return;
-  }
-  YourTotalHP->Text = TotalHP;
 
   int TotalRecChainNum = 0;
   if (Mercenary->Checked)
@@ -427,11 +425,16 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
   AttRate2->Text = AttRate;
   TotalAttRate *= AttRate;
 
+  if (TwoTypeLeader->Checked || Wolve->Checked)
+  {
+    TotalAttRate *= 1.5;
+  }
+
   MsgBoard->Lines->Add("總攻擊倍率=" + FloatToStr(TotalAttRate*100) + "%");
 
   //---
 
-  bool hasTwoGemLeader = TwoGemLeader->Checked;
+  bool IsTwoGemMatch = TwoGemMatchLeader->Checked;
 
   int TotalAttackGem  = StrToNum(AttGemNum->Text,0);
   AttGemNum->Text = TotalAttackGem;
@@ -439,10 +442,10 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
   int TotalAttackPowGem = StrToNum(PowerGemNum->Text,0);
   PowerGemNum->Text = TotalAttackPowGem;
 
-  int AttackGemChainNum = StrToNum(AttGemChainNum->Text,(TotalAttackGem>(hasTwoGemLeader?2:3))?1:0); // auto seting 1 or 0 chain
+  int AttackGemChainNum = StrToNum(AttGemChainNum->Text,(TotalAttackGem>(IsTwoGemMatch?2:3))?1:0); // auto seting 1 or 0 chain
   AttGemChainNum->Text = AttackGemChainNum;
 
-  int TotalCombo = StrToNum(ComboNum->Text, (TotalAttackGem>(hasTwoGemLeader?2:3))?1:0); // auto seting 1 or 0 combo
+  int TotalCombo = StrToNum(ComboNum->Text, (TotalAttackGem>(IsTwoGemMatch?2:3))?1:0); // auto seting 1 or 0 combo
   ComboNum->Text = TotalCombo;
 
   double AdditionalComboRate = 0.0;
@@ -451,13 +454,13 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
     AdditionalComboRate = (TotalCombo-AttackGemChainNum-TotalRecChainNum)*0.5;
   }
 
-  int AdditionalGem = TotalAttackGem - (hasTwoGemLeader?2:3)*AttackGemChainNum;
+  int AdditionalGem = TotalAttackGem - (IsTwoGemMatch?2:3)*AttackGemChainNum;
   double AddGemRate = AdditionalGem*0.25;  // 額外消除的攻珠的加乘倍率
   double PowGemRate = TotalAttackPowGem * (AddAttForPowGem->Checked?0.25:0.15); //強珠加成倍率
-  double GemRate    = AttackGemChainNum * (hasTwoGemLeader?0.75:1.0) + AdditionalComboRate + AddGemRate + PowGemRate;
+  double GemRate    = AttackGemChainNum * (IsTwoGemMatch?0.75:1.0) + AdditionalComboRate + AddGemRate + PowGemRate;
 
   MsgBoard->Lines->Add("總消珠加成="   + FloatToStr(GemRate*100) + "%"
-                       " ("  + FloatToStr(AttackGemChainNum*(hasTwoGemLeader?75:100)) + "%"
+                       " ("  + FloatToStr(AttackGemChainNum*(IsTwoGemMatch?75:100)) + "%"
                        " + " + FloatToStr(AddGemRate*100)        + "%"
                        " + " + FloatToStr(PowGemRate*100)        + "%" ")");
   //MsgBoard->Lines->Add("(攻擊珠加成="   + FloatToStr(AttackGemChainNum*100) + "%");
@@ -488,9 +491,6 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
 
   double TotalAddAtt = 1;
 
-  if (FireWitch->Checked)
-    TotalAddAtt *= 1.5;
-
   if (Add2_00->Checked)
     TotalAddAtt *= 2;
 
@@ -506,16 +506,13 @@ void __fastcall TTosAttCalcMainForm::ProcessClick(TObject *Sender)
   if (Jinx->Checked)
     TotalAddAtt *= 1.5;
 
-  if (DoubleAtt->Checked)
-    TotalAddAtt *= 2;
-
   if (TotalCombo>8 && Combo8DoubleAtt->Checked)
     TotalAddAtt *= 2;
 
-  double OdinAddAtt = 1; 
+  double OdinAddAtt = 0.0;
   if (Odin->Checked)
   {
-    OdinAddAtt += 1.5*(1.0-HP/(double)TotalHP);
+    OdinAddAtt = 2.5-1.5*HP/(double)TotalHP;
     TotalAddAtt *= OdinAddAtt;
   }
 
@@ -608,6 +605,18 @@ void __fastcall TTosAttCalcMainForm::ReturnKeyDown(TObject *Sender,
     if (ctrl)
       ctrl->SetFocus();
   }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TTosAttCalcMainForm::Label4Click(TObject *Sender)
+{
+  system("explorer.exe mailto:mirror.tw@gmail.com");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TTosAttCalcMainForm::Label5Click(TObject *Sender)
+{
+  system("explorer.exe https://github.com/Mirrorchiu/TosAttCalc/");
 }
 //---------------------------------------------------------------------------
 
